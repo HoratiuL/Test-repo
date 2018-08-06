@@ -7,55 +7,57 @@ import ColorButtons from './components/ColorButtons';
 
 class App extends Component {
   state = {
-    inputColor: "",
-    buttonColor: "",
-    selectedColor: ""
+    inputColor: '',
+    buttonColor: '',
+    selectedColor: '',
   }
 
   onColorChange = (event) => {
     const { value } = event.target;
     const newValue = this.state.selectedColor + value;
     this.setState({
-      selectedColor: newValue
+      selectedColor: newValue,
     });
   }
 
   onSelectColor = (color) => {
     this.setState({
-      selectedColor: color
+      selectedColor: color,
     });
   }
 
   onFocus = () => {
     this.setState({
-      inputState: ''
+      inputState: '',
     });
   }
 
   render() {
+    const {selectedColor, inputColor}
     return (
       <div className="App">
-      <MyHeader 
-      title={"Hello React-Demo" }
-      color={this.state.selectedColor}
-      />
+        <MyHeader
+          title="Hello React-Demo"
+          color={this.state.selectedColor}
+        />
         <div>
-          <ColorChooser 
-          selectedColor={this.state.inputColor}
-          onColorChange={this.onColorChange}
-          onFocus={this.onFocus}
+          <ColorChooser
+            selectedColor={inputColor}
+            onColorChange={onColorChange}
+            onFocus={this.onFocus}
           />
         </div>
         <ColorButtons onSelectColor={this.onSelectColor} />
-        <Footer/>
+        <Footer />
       </div>
     );
   }
 }
 
-const Footer = () => {
-return<footer>
+const Footer = () => (
+<footer>
   <p>ColorChooser Footer</p>
-</footer>}
+</footer>
+);
 
 export default App;
